@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentInstructionBinding
 
 class InstructionFragment : Fragment() {
@@ -19,8 +21,12 @@ class InstructionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        mBinding = FragmentInstructionBinding.inflate(layoutInflater)
+
+        val mBinding = DataBindingUtil.inflate(inflater,
+                                                R.layout.fragment_instruction,
+                                                container,
+                                    false) as FragmentInstructionBinding
+
         mInstructionViewModel = ViewModelProvider(this)
             .get(InstructionsViewModel::class.java)
         mBinding.instructionViewModel = mInstructionViewModel

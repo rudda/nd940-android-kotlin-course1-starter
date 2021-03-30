@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import com.udacity.shoestore.R
+import com.udacity.shoestore.databinding.FragmentLoginBinding
 import com.udacity.shoestore.databinding.FragmentShoeDetailBinding
 import com.udacity.shoestore.models.Shoe
 import com.udacity.shoestore.ui.SharedShoeViewModel
@@ -23,7 +26,10 @@ class ShoeDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mBinding = FragmentShoeDetailBinding.inflate(layoutInflater)
+        mBinding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_shoe_detail,
+            container,
+            false) as FragmentShoeDetailBinding
 
         mShoeDetailViewModel = ViewModelProvider(this)
             .get(ShoeDetailViewModel::class.java)

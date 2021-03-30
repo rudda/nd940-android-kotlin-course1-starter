@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import com.udacity.shoestore.R
+import com.udacity.shoestore.databinding.FragmentInstructionBinding
 import com.udacity.shoestore.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
@@ -19,7 +22,10 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mBinding = FragmentLoginBinding.inflate(layoutInflater)
+        mBinding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_login,
+            container,
+            false) as FragmentLoginBinding
 
         mViewModel = ViewModelProvider(this)
             .get(LoginViewModel::class.java)

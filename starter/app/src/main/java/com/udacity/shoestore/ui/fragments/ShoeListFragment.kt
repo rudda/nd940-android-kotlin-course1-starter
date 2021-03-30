@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.udacity.shoestore.R
+import com.udacity.shoestore.databinding.FragmentShoeDetailBinding
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
 import com.udacity.shoestore.databinding.LayoutShoeItemBinding
 import com.udacity.shoestore.ui.SharedShoeViewModel
@@ -27,10 +28,10 @@ class ShoeListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mBinding = FragmentShoeListBinding.inflate(layoutInflater)
-
-
-
+        mBinding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_shoe_list,
+            container,
+            false) as FragmentShoeListBinding
         mShoeListViewModel = ViewModelProvider(this).get(ShoeListViewModel::class.java)
         mBinding.shoeListViewModel = mShoeListViewModel
         return mBinding.root
