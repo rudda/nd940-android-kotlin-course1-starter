@@ -9,6 +9,8 @@
             type="com.udacity.shoestore.ui.fragments.ShoeListViewModel" />
     </data>
 
+    <!-- I chose ConstraintLayout because it is a better option instead Linear Layout
+     in responsive terms and it  is so easy to create layouts from layout editor instead of inline code with Linear Layout-->
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="match_parent"

@@ -7,6 +7,11 @@
             name="welcomeViewModel"
             type="com.udacity.shoestore.ui.fragments.WelcomeViewModel" />
     </data>
+
+    <!-- I chose ConstraintLayout because it is a better option instead Linear Layout
+     in responsive terms and it  is so easy to create layouts from layout editor instead
+     of inline code with Linear Layout-->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

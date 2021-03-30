@@ -20,7 +20,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
     </com.google.android.material.appbar.AppBarLayout>
-
+    <!-- I chose Linear Layout because there is just a fragment to attach-->
     <LinearLayout
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
@@ -42,7 +42,6 @@
             android:layout_width="match_parent"
             />
     </LinearLayout>
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
