@@ -17,4 +17,5 @@
     <string name="company">Company</string>
     <string name="shoe_size">Shoe Size</string>
     <string name="shoe_description">Description</string>
+    <string name="logout">"Logout"</string>
 </resources>

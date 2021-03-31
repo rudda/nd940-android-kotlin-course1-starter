@@ -1,10 +1,8 @@
 package com.udacity.shoestore.ui.fragments
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -34,7 +32,24 @@ class ShoeListFragment : Fragment() {
             false) as FragmentShoeListBinding
         mShoeListViewModel = ViewModelProvider(this).get(ShoeListViewModel::class.java)
         mBinding.shoeListViewModel = mShoeListViewModel
+
+        setHasOptionsMenu(true)
         return mBinding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        val inflater: MenuInflater = inflater
+        inflater.inflate(R.menu.main_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        if(item.itemId == R.id.menu_logout) {
+            mSharedShoeViewModel.logout()
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onStart() {
@@ -62,6 +77,14 @@ class ShoeListFragment : Fragment() {
             if(hasClick) {
                 val action = ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment()
                 Navigation.findNavController(mBinding.root).navigate(action)
+            }
+        })
+
+        mSharedShoeViewModel.islogout.observe(viewLifecycleOwner, Observer { logout ->
+            if(logout) {
+                val action = ShoeListFragmentDirections.actionShoeListFragmentToLoginFragment()
+                Navigation.findNavController(mBinding.root).navigate(action)
+                mSharedShoeViewModel.logoutCompleted()
             }
         })
     }

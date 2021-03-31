@@ -20,7 +20,7 @@ class LoginViewModel : ViewModel() {
         _hasLogin.value = true
     }
 
-    fun logout() {
+    fun logoutCompleted() {
         _hasLogin.value = false
     }
 

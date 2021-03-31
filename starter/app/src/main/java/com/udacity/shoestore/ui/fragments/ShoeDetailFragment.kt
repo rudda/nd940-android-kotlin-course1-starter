@@ -15,6 +15,7 @@ import com.udacity.shoestore.databinding.FragmentLoginBinding
 import com.udacity.shoestore.databinding.FragmentShoeDetailBinding
 import com.udacity.shoestore.models.Shoe
 import com.udacity.shoestore.ui.SharedShoeViewModel
+import timber.log.Timber
 
 class ShoeDetailFragment : Fragment() {
 
@@ -48,11 +49,13 @@ class ShoeDetailFragment : Fragment() {
             if (clicked) {
 
                 var newShoe: Shoe = Shoe("", 0.0, "", "")
-
                 newShoe.name = mBinding.shoeNameText.text.toString()
                 newShoe.company = mBinding.shoeCompanyText.text.toString()
-                newShoe.size = mBinding.shoeSizeEText.text.toString().toDouble()
                 newShoe.description = mBinding.shoeDescriptionText.text.toString()
+
+                newShoe.size =
+                    if(mBinding.shoeSizeEText.text.toString().isEmpty())  0.0
+                    else  mBinding.shoeSizeEText.text.toString().toString().toDouble()
 
                 mSharedShoeViewModel.addShoe(newShoe)
                 mShoeDetailViewModel.restore()
