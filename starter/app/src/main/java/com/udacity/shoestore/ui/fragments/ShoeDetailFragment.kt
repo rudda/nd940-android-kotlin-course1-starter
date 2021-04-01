@@ -48,19 +48,19 @@ class ShoeDetailFragment : Fragment() {
 
             if (clicked) {
 
-                var newShoe: Shoe = Shoe("", 0.0, "", "")
-                newShoe.name = mBinding.shoeNameText.text.toString()
-                newShoe.company = mBinding.shoeCompanyText.text.toString()
-                newShoe.description = mBinding.shoeDescriptionText.text.toString()
+                mShoeDetailViewModel.newShoe.apply {
+                    this.name = mBinding.shoeNameText.text.toString()
+                    this.company = mBinding.shoeCompanyText.text.toString()
+                    this.description = mBinding.shoeDescriptionText.text.toString()
 
-                newShoe.size =
-                    if(mBinding.shoeSizeEText.text.toString().isEmpty())  0.0
-                    else  mBinding.shoeSizeEText.text.toString().toString().toDouble()
+                    this.size =
+                        if(mBinding.shoeSizeEText.text.toString().isEmpty())  0.0
+                        else  mBinding.shoeSizeEText.text.toString().toString().toDouble()
 
-                mSharedShoeViewModel.addShoe(newShoe)
-                mShoeDetailViewModel.restore()
-                navigateToShoeList()
-
+                    mSharedShoeViewModel.addShoe(this)
+                    mShoeDetailViewModel.restore()
+                    navigateToShoeList()
+                }
             }
 
         })

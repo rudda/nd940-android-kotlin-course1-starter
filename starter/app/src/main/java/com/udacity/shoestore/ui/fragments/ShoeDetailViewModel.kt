@@ -7,6 +7,8 @@ import com.udacity.shoestore.models.Shoe
 
 class ShoeDetailViewModel : ViewModel() {
 
+    var newShoe: Shoe = Shoe("", 0.0, "", "")
+
     private var _saveButton = MutableLiveData<Boolean>()
     public val saveButton : LiveData<Boolean>
                     get() = _saveButton
